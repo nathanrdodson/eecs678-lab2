@@ -1,0 +1,32 @@
+Lab quiz questions
+
+1. There are two special signals (KILL and STOP) which are not handled by
+the process they are sent to. When a KILL or STOP signal is generated, the
+operating system itself handles this signal and kills or stops the
+appropriate process. Considering what you learned in today's lab, speculate
+as to why the system designers chose to include signals which are handled
+solely by the operating system.
+
+Due to the imperfect nature of programming design, having reliable low-level
+signal handling will make it so that that when problems arise, they can be 
+reliably mitigated. If system designers had no signals that couldn't be 
+modified by a software developer, it might present dangerous scenarios 
+for end users.
+
+ 
+
+2.What benefit do we gain from using the pause system call as opposed to
+an infinite while loop?
+
+For efficiency's sake - we do not need to waste CPU cyles for time (as would happen
+in an infinite loop) and instead can offer back up those cycles during the pause time.
+ 
+
+3.Why do we mask other signals while inside the signal handler?
+
+I would think we want to handle signals one at a time to prevent unexpected/odd behavior.
+
+
+4.When we implement the time out, we do not mask the SIGALRM signal. Why?
+If we blocked SIGALRM, the program would wait until after user input to set the alarm, 
+which would defeat the purpose of having SIGALRM to begin with.
